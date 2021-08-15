@@ -1,0 +1,37 @@
+﻿@model IEnumerable<GETApp.Models.Reservation>
+@using GETApp.Utility
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (User.IsInRole(SD.AdminUser))
+{
+
+
+    <h1>Lista rezervacija</h1>
+
+<p>
+    <a asp-action="Create">Dodaj novu rezervaciju</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ime i prezime</th>
+            <th>Broj Telefona</th>
+            <th>Datum i Vreme </th>
+            <th>Sto </th>
+            <th>Dodatne informacije </th>
+        </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+</table>
+}
+else
+{
+    <p class="text-danger" style="text-align:center">Pristup onemogucen.</p>
+    <div class="text-center">
+        <a class="btn btn-primary" asp-area="Customer" asp-controller="Home" asp-action="Index" >Nazad na početnu stranu</a>
+    </div>
+}

@@ -1,0 +1,77 @@
+﻿@model GETApp.Models.Reservation
+@using GETApp.Utility
+
+
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (User.IsInRole(SD.AdminUser) || User.IsInRole(SD.CustomerEndUser))
+{
+
+
+    <h1>Kreiraj novu rezervaciju</h1>
+
+
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label">Ime i prezime</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PhoneNumber" class="control-label">Broj telefona</label>
+                    <input asp-for="PhoneNumber" class="form-control" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DateTime" class="control-label">Datum i vreme</label>
+                    <input asp-for="DateTime" class="form-control" />
+                    <span asp-validation-for="DateTime" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Table" class="control-label">Izaberite sto</label>
+                    <select asp-for="Table" class="form-control">
+                        <option value="1">1. Sto</option>
+                        <option value="2">2. Sto</option>
+                        <option value="3">3. Sto</option>
+                        <option value="4">4. Sto</option>
+                    </select>
+                    <span asp-validation-for="Table" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AdditionalComment" class="control-label">Dodatne informacije</label>
+                    <textarea placeholder="Upisite dodatne informacije..." asp-for="AdditionalComment" class="form-control"></textarea>
+                    <span asp-validation-for="AdditionalComment" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Rezerviši" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+}
+else
+{
+    <p class="text-danger" style="text-align:center">Pristup onemogucen.</p>
+    <div class="text-center">
+        <a class="btn btn-primary" asp-area="Customer" asp-controller="Home" asp-action="Index">Nazad na početnu stranu</a>
+    </div>
+}
+@if (User.IsInRole(SD.AdminUser))
+{
+
+    <div>
+        <a asp-action="Index">Nazad na listu</a>
+    </div>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
