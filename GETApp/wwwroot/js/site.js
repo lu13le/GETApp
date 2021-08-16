@@ -23,7 +23,8 @@ $(() => {
                         <td> ${v.DateTime}</td>
                         <td> ${v.Table}</td>
                         <td> ${v.AdditionalComment}</td>
-                        
+                       
+
                       </tr>`
 
                 })

@@ -32,22 +32,22 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="DateTime" class="control-label">Datum i vreme</label>
-                    <input asp-for="DateTime" class="form-control" />
+                    <input asp-for="DateTime" class="form-control"/>
                     <span asp-validation-for="DateTime" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Table" class="control-label">Izaberite sto</label>
                     <select asp-for="Table" class="form-control">
-                        <option value="1">1. Sto</option>
-                        <option value="2">2. Sto</option>
-                        <option value="3">3. Sto</option>
-                        <option value="4">4. Sto</option>
+                        <option value="1">Sto broj 1</option>
+                        <option value="2">Sto broj 2</option>
+                        <option value="3">Sto broj 3</option>
+                        <option value="4">Sto broj 4</option>
                     </select>
                     <span asp-validation-for="Table" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="AdditionalComment" class="control-label">Dodatne informacije</label>
-                    <textarea placeholder="Upisite dodatne informacije..." asp-for="AdditionalComment" class="form-control"></textarea>
+                    <textarea placeholder="Upisite dodatne informacije..."  asp-for="AdditionalComment" class="form-control"></textarea>
                     <span asp-validation-for="AdditionalComment" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -75,3 +75,4 @@ else
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
